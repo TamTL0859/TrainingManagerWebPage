@@ -1,6 +1,6 @@
-@TrainingManagerWebPage_HostAddress = http://localhost:5146
+@ReactWebPage.Server_HostAddress = http://localhost:5163
 
-GET {{TrainingManagerWebPage_HostAddress}}/weatherforecast/
+GET {{ReactWebPage.Server_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
