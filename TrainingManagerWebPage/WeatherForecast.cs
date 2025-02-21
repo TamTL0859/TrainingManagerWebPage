@@ -1,4 +1,4 @@
-namespace TrainingManagerWebPage
+namespace TrainingManagerAPI
 {
     public class WeatherForecast
     {
