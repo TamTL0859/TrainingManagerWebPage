@@ -3,8 +3,8 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
-appsettings.json
-appsettings.Development.json
+*.Development.json
+TrainingManagerWebPage/appsettings.Development.json
 
 bin/
 obj/
@@ -402,4 +402,3 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
-TrainingManagerWebPage/appsettings.Development.json
