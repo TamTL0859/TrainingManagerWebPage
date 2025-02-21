@@ -1,0 +1,6 @@
+@TrainingManagerWebPage_HostAddress = http://localhost:5146
+
+GET {{TrainingManagerWebPage_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
