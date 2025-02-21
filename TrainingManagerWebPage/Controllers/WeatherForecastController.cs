@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace TrainingManagerWebPage.Controllers
+namespace TrainingManagerAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
