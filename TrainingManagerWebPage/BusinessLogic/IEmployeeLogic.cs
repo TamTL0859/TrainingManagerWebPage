@@ -1,6 +1,11 @@
-﻿namespace TrainingManagerAPI.BusinessLogic
+﻿using TrainingManagerAPI.DTO;
+
+namespace TrainingManagerAPI.BusinessLogic
 {
-	public class IEmployeeLogic
+	public interface IEmployeeLogic
 	{
+		public EmployeeViewDTO getEmployee(int employeeID);
+
+		public List<EmployeeViewDTO> GetEmployees();
 	}
 }

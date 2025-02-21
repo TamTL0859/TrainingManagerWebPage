@@ -1,9 +1,22 @@
+using TrainingManagerAPI.BusinessLogic;
+using TrainingManagerAPI.DataAccess;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
+
+//DI IConfiguartion
+builder.Services.AddScoped<TrainingDocumentLogic>();
+builder.Services.AddScoped<TrainingDocumentAccess>();
+
+builder.Services.AddScoped<EmployeeTrainingDocumentLogic>();
+builder.Services.AddScoped<EmployeeTrainingDocumentAccess>();
+
+builder.Services.AddScoped<EmployeeLogic>();
+builder.Services.AddScoped<EmployeeAccess>();
 
 var app = builder.Build();
 
