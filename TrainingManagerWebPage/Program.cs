@@ -18,6 +18,15 @@ builder.Services.AddScoped<EmployeeTrainingDocumentAccess>();
 builder.Services.AddScoped<EmployeeLogic>();
 builder.Services.AddScoped<EmployeeAccess>();
 
+builder.Services.AddCors(options =>
+{
+	options.AddPolicy("AllowAllOrigins",
+		policy => policy.AllowAnyOrigin()  // This allows all origins
+						.AllowAnyMethod()  // Allow any HTTP method (GET, POST, etc.)
+						.AllowAnyHeader()); // Allow any headers
+});
+
+
 var app = builder.Build();
 
 // https://localhost:7244/swagger/index.html 
@@ -28,10 +37,11 @@ app.UseSwaggerUI(options => {
 	options.SwaggerEndpoint("/swagger/v1/swagger.json", "TEST API V1");
 });
 }
-
-// Configure the HTTP request pipeline.
+app.UseCors("AllowAllOrigins");
 
 app.UseHttpsRedirection();
+
+app.UseRouting();
 
 app.UseAuthorization();
 

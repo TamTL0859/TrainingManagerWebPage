@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35514.174
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "reactwebapp.client", "ReactWebApp\reactwebapp.client\reactwebapp.client.esproj", "{DFFCB2D4-0385-E71C-A0D1-D787AC4B18ED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingManagerAPI", "TrainingManagerWebPage\TrainingManagerAPI.csproj", "{C47DDE12-416D-464C-B35E-7E6B65FB055B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactWebAppServer", "ReactWebApp\ReactWebApp.Server\ReactWebAppServer.csproj", "{54D312CD-CF30-46BF-826B-9C30020E2F64}"
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "reactwebclient", "ReactWebClient\reactwebclient.esproj", "{A98D8A4D-A4F9-C363-31D6-17EA7713543B}"
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "reactwebpage.client", "ReactWebPage\reactwebpage.client\reactwebpage.client.esproj", "{9CC7B5C6-F049-C42D-D2E7-5C64DAB6853E}"
 EndProject
@@ -21,16 +21,16 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DFFCB2D4-0385-E71C-A0D1-D787AC4B18ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DFFCB2D4-0385-E71C-A0D1-D787AC4B18ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DFFCB2D4-0385-E71C-A0D1-D787AC4B18ED}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{DFFCB2D4-0385-E71C-A0D1-D787AC4B18ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DFFCB2D4-0385-E71C-A0D1-D787AC4B18ED}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DFFCB2D4-0385-E71C-A0D1-D787AC4B18ED}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{54D312CD-CF30-46BF-826B-9C30020E2F64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{54D312CD-CF30-46BF-826B-9C30020E2F64}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{54D312CD-CF30-46BF-826B-9C30020E2F64}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{54D312CD-CF30-46BF-826B-9C30020E2F64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C47DDE12-416D-464C-B35E-7E6B65FB055B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C47DDE12-416D-464C-B35E-7E6B65FB055B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C47DDE12-416D-464C-B35E-7E6B65FB055B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C47DDE12-416D-464C-B35E-7E6B65FB055B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A98D8A4D-A4F9-C363-31D6-17EA7713543B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A98D8A4D-A4F9-C363-31D6-17EA7713543B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A98D8A4D-A4F9-C363-31D6-17EA7713543B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{A98D8A4D-A4F9-C363-31D6-17EA7713543B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A98D8A4D-A4F9-C363-31D6-17EA7713543B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A98D8A4D-A4F9-C363-31D6-17EA7713543B}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
