@@ -19,9 +19,10 @@ namespace TrainingManagerAPI.Controllers
 
 		// GET: api/<EmployeeController>
 		[HttpGet]
-        public IEnumerable<EmployeeViewDTO> Get()
+        public IEnumerable<string> Get()
         {
-            return _employeeLogic.GetEmployees();
+            return new List<string>(["123", "1233"]);
+                //_employeeLogic.GetEmployees();
         }
 
         // GET api/<EmployeeController>/5
