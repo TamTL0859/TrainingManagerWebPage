@@ -7,14 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingManagerWebPage", "T
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "reactwebclient", "reactwebclient\reactwebclient.esproj", "{A98D8A4D-A4F9-C363-31D6-17EA7713543B}"
 EndProject
-Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "reactwebpage.client", "ReactWebPage\reactwebpage.client\reactwebpage.client.esproj", "{9CC7B5C6-F049-C42D-D2E7-5C64DAB6853E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactWebPage.Server", "ReactWebPage\ReactWebPage.Server\ReactWebPage.Server.csproj", "{EDEB7539-D78F-447A-A983-1A34A13F8C98}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{A5E2DE98-507F-4804-B8DA-3C8055C9FB78}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,11 +26,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{C47DDE12-416D-464C-B35E-7E6B65FB055B} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
-		{9CC7B5C6-F049-C42D-D2E7-5C64DAB6853E} = {A5E2DE98-507F-4804-B8DA-3C8055C9FB78}
-		{EDEB7539-D78F-447A-A983-1A34A13F8C98} = {A5E2DE98-507F-4804-B8DA-3C8055C9FB78}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5912928C-4068-401C-AE78-A23402BB212C}
