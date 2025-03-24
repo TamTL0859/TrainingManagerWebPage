@@ -1,4 +1,6 @@
-﻿using TrainingManagerAPI.Model.Enum;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
+using TrainingManagerAPI.Model.Enum;
 
 namespace TrainingManagerAPI.Model
 {
@@ -6,6 +8,8 @@ namespace TrainingManagerAPI.Model
 	{
 		public int? EmployeeID { get; set; }
 		public required int PointsStatus { get; set; }
+
+		[JsonConverter(typeof(JsonStringEnumConverter))]
 		public required TrainingRequired TrainingRequired { get; set; }
 	}
 }

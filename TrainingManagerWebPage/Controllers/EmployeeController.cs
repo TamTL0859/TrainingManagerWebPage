@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TrainingManagerAPI.BusinessLogic;
 using TrainingManagerAPI.DTO;
+using TrainingManagerAPI.Model;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -31,9 +32,8 @@ namespace TrainingManagerAPI.Controllers
         {
             return _employeeLogic.getEmployee(id);
         }
-
-        // POST api/<EmployeeController>
-        [HttpPost]
+		// POST api/<EmployeeController>
+		[HttpPost]
         public void Post([FromBody]string value)
         {
         }

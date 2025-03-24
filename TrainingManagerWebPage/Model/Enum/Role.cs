@@ -2,7 +2,7 @@
 {
 	public enum Role
 	{
-		ADMINSTRATOR,
-		EMPLOYEE
+		ADMINSTRATOR = 1,
+		EMPLOYEE = 2
 	}
 }

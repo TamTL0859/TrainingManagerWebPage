@@ -1,6 +1,7 @@
 ﻿using TrainingManagerAPI.DataAccess;
 using TrainingManagerAPI.DTO;
 using TrainingManagerAPI.Model;
+using TrainingManagerWebPage.DTO;
 
 namespace TrainingManagerAPI.BusinessLogic
 {
@@ -17,10 +18,17 @@ namespace TrainingManagerAPI.BusinessLogic
 
 		public EmployeeViewDTO getEmployee(int employeeID)
 		{
-			Employee employee = _employeeDataAccess.getEmployee(employeeID);
-			employee.EmployeeTrainingDocuments = _employeeTrainingDocumentLogic.GetEmployeeTrainingDocuments(employeeID);
+			Employee? employee = _employeeDataAccess.getEmployee(employeeID);
 
-			EmployeeViewDTO employeeViewDTO = DTOConverter.FromEmployee(employee);
+			if (employee == null) { return new EmployeeViewDTO(); }
+
+			List<EmployeeTrainingDocument> etds = [];
+			etds = _employeeTrainingDocumentLogic.GetEmployeeTrainingDocuments(employeeID);
+			etds = Converter.ToEnum(etds);
+
+			employee.EmployeeTrainingDocuments = etds;
+
+			EmployeeViewDTO employeeViewDTO = Converter.FromEmployee(employee);
 
 			return employeeViewDTO;
 		}
@@ -35,7 +43,7 @@ namespace TrainingManagerAPI.BusinessLogic
 				if(employee.EmployeeID != null) { 
 				employee.EmployeeTrainingDocuments = _employeeTrainingDocumentLogic.GetEmployeeTrainingDocuments((int)employee.EmployeeID);
 				}
-				EmployeeViewDTO employeeViewDTO = DTOConverter.FromEmployee(employee);
+				EmployeeViewDTO employeeViewDTO = Converter.FromEmployee(employee);
 				employeeViewDTOs.Add(employeeViewDTO);
 			}
 

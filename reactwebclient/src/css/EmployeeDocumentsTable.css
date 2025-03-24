@@ -1,0 +1,115 @@
+
+
+div {
+    width: 100%; /* Full width */
+    height: 100vh; /* Full viewport height */
+}
+/* Make sure the parent container takes the full width and height of the screen */
+.parent {
+    flex-direction: column; /* Arrange children vertically (header on top, sections below) */
+}
+
+/* Table styling */
+table {
+    border-collapse: collapse;
+    border: 2px solid rgb(140, 140, 140);
+    font-family: sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    width: 80%; /* Optional: You can adjust this to control the width */
+    margin: 0 auto; /* Ensure it is horizontally centered */
+}
+
+th, td {
+    border: 1px solid rgb(160, 160, 160);
+    padding: 8px 10px;
+    text-align: center;
+}
+
+    th[scope="col"] {
+        background-color: #505050;
+        color: #fff;
+    }
+
+    th[scope="row"] {
+        background-color: #d6ecd4;
+    }
+
+tr:nth-of-type(even) {
+    background-color: #eee;
+}
+
+caption {
+    caption-side: bottom;
+    padding: 10px;
+}
+
+.left-section {
+    flex: 0 0 30%; /* Don't grow, don't shrink, take up 20% */
+    background-color: lightgray; /* Optional: Set a background color for visual distinction */
+    padding: 10px; /* Optional padding */
+}
+
+/* Style for the right section (80%) */
+.right-section {
+    flex: 0 0 70%; /* Don't grow, don't shrink, take up 80% */
+    background-color: lightblue; /* Optional: Set a background color for visual distinction */
+    padding: 10px; /* Optional padding */
+
+}
+
+/* Header styling */
+.header {
+    text-align: center; /* Ensure the header text is centered */
+    width: 100%; /* Optional: Ensure it takes full width if you want */
+    margin-top: 20px; /* Add some spacing from the top */
+    font-size: 2rem; /* You can adjust the font size as needed */
+}
+
+/* Styling for the parent div containing left and right sections */
+.section {
+    display: flex; /* Use Flexbox to lay out the sections horizontally */
+    width: 100%; /* Ensure it takes full width */
+    height: 100vh;
+    gap: 5px; /* Optional: Add a 5px gap between sections */
+}
+
+.left-section div {
+    margin-top: 10px;
+    padding: 0px;
+    display: flex; /* Use Flexbox */
+    flex-direction: column; /* Stack the labels vertically */
+    gap: 5px; /* Add a 5px gap between each label */
+    margin-bottom: 25px;
+    height: auto;
+    
+}
+
+label {
+    margin: 0; /* Remove any default margin */
+    padding: 0; /* Remove any default padding */
+}
+
+button {
+    display: inline-block;
+    outline: 0;
+    text-align: center;
+    cursor: pointer;
+    height: 34px;
+    padding: 0 13px;
+    vertical-align: top;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    transition: all .3s ease;
+    background: #fff;
+    border-color: #e8e8e8;
+    color: #000;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 11px;
+    font-size: 10px;
+    background: #e8e8e8;
+    color: #3d3d3d;
+    width: 100px;
+}
+                
