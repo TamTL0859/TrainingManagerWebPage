@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using TrainingManagerAPI.BusinessLogic;
 using TrainingManagerAPI.DataAccess;
 
@@ -20,12 +21,17 @@ builder.Services.AddScoped<EmployeeAccess>();
 
 builder.Services.AddCors(options =>
 {
-	options.AddPolicy("AllowAllOrigins",
-		policy => policy.AllowAnyOrigin()  // This allows all origins
-						.AllowAnyMethod()  // Allow any HTTP method (GET, POST, etc.)
-						.AllowAnyHeader()); // Allow any headers
+	options.AddPolicy("AllowOrigins",
+		policy => policy.WithOrigins("http://localhost:5173") //react origin
+						.AllowAnyMethod()  
+						.AllowAnyHeader()); 
 });
 
+builder.Services.AddControllers()
+	.AddJsonOptions(options =>
+	{
+		options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+	});
 
 var app = builder.Build();
 
@@ -37,7 +43,7 @@ app.UseSwaggerUI(options => {
 	options.SwaggerEndpoint("/swagger/v1/swagger.json", "TEST API V1");
 });
 }
-app.UseCors("AllowAllOrigins");
+app.UseCors("AllowOrigins");
 
 app.UseHttpsRedirection();
 

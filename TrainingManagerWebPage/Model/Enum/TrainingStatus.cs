@@ -2,8 +2,8 @@
 {
 	public enum TrainingStatus
 	{
-		MISSING,
-		OPTIONAL,
-		COMPLETED
+		MISSING = 1,
+		OPTIONAL = 2,
+		COMPLETED = 3
 	}
 }

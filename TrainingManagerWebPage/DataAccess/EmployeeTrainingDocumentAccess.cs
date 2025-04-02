@@ -16,11 +16,22 @@ namespace TrainingManagerAPI.DataAccess
 		public List<EmployeeTrainingDocument> getEmployeeTrainingDocuments(int employeeID)
 		{
 			List<EmployeeTrainingDocument> employeeTrainingDocuments = [];
-			string getDocumentsQuery = "SELECT * FROM EmployeeTrainingDocuments where employeeID = @employeeID";
+			string getEmployeeTrainingDocumentsQuery = "SELECT d.documentTitle, d.pointsGoal, d.pointsStatus, d.trainingRequired, d.trainingStatus, d.trainingtype, td.trainingDocumentID, e.employeeID " +
+				"FROM EmployeeTrainingDocuments d " +
+				"LEFT JOIN TrainingDocuments td ON d.fk_trainingDocumentID = td.trainingDocumentID " +
+				"LEFT JOIN Employees e ON d.fk_employeeID = e.employeeID " +
+				"WHERE d.fk_employeeID = @EmployeeID";
 
 			using (SqlConnection connection = new(_connectionString))
 			{
-				employeeTrainingDocuments = connection.Query<EmployeeTrainingDocument>(getDocumentsQuery, new { EmployeeID = employeeID }).ToList();
+				employeeTrainingDocuments = connection.Query<EmployeeTrainingDocument, TrainingDocument, Employee, EmployeeTrainingDocument>(getEmployeeTrainingDocumentsQuery, (etd, td, e) =>
+				{
+					etd.TrainingDocumentID = td.TrainingDocumentID;
+					etd.EmployeeID = e.EmployeeID;
+					return etd;
+				}, new { EmployeeID = employeeID },
+				splitOn: "trainingDocumentID, employeeID"
+				).ToList();
 			}
 
 			return employeeTrainingDocuments;

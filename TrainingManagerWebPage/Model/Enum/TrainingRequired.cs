@@ -2,8 +2,8 @@
 {
 	public enum TrainingRequired
 	{
-		MANDATORY,
-		OPTIONAL,
-		NOTREQUIRED
+		MANDATORY = 1,
+		OPTIONAL = 2,
+		NOTREQUIRED = 3
 	}
 }

@@ -1,0 +1,23 @@
+/* Reset default margin/padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Apply styles to the body to ensure the content starts at the top-left */
+body {
+    font-family: Arial, sans-serif;
+    display: block;          /* Standard block layout */
+    height: 100vh;           /* Full height of the viewport */
+    width: 100vw;            /* Full width of the viewport */
+    overflow: hidden;        /* Prevent any overflow */
+}
+
+/* Add a thin black border to div elements */
+div {
+    text-align: left;        /* Align text to the left */
+    padding: 5px;           /* Optional padding for spacing */
+    margin: 0;               /* Ensure no default margin is applied */
+    border: 1px solid black; /* Thin black outline */
+}
