@@ -64,9 +64,9 @@ const EmployeeTrainingDocumentsPage = () => {
                             <tr>
                                 <th scope="col">ID</th>
                                 <th scope="col">Document Name</th>
+                                <th scope="col">Type</th>
                                 <th scope="col">Point Status</th>
                                 <th scope="col">Point Goal</th>
-                                <th scope="col">Type</th>
                                 <th scope="col">Required</th>
                                 <th scope="col">Status</th>
                             </tr>
