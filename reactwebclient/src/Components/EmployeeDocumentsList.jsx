@@ -17,7 +17,7 @@ const EmployeeDocumentsList = ({ Employee }) => {
 
 
     const handleClick = (index) => {
-        setCellClick(cellClick === index ? null : index);
+        setCellClick(index)
     }
 
     const mouseLeave = () => {
@@ -45,7 +45,7 @@ const EmployeeDocumentsList = ({ Employee }) => {
                         {cellClick === edIndex && (
                             <div className="dropdown-content">  {[...Array(ed.pointsGoal / 10 + 1)].map((_, index) => (
                                 <button className="dropdown-button" key={index} onClick={() => changeToSelectedPointsStatus(edIndex, index * 10)}>{index * 10}</button>
-                            ))}
+                            ))}aw
                             </div>
                         )}
                     </td>

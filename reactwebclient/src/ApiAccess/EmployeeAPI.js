@@ -26,6 +26,15 @@ export const getEmployee = async (id) => {
         return null;
     }
 }
+export const UpdateEmployeeTrainingDocument = async (id) => {
+    try {
+        const response = await api.post(`/updateETD/${id}`); //TODO: MAKE THIS
+        return response.data;
+    } catch (e) {
+        console.log("Error", e);
+        return null;
+    }
+}
 
 export default {
     getEmployees,

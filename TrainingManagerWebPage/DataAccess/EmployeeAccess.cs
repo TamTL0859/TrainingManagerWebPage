@@ -13,7 +13,7 @@ namespace TrainingManagerAPI.DataAccess
 		}
 
 
-		public Employee getEmployee(int employeeID)
+		public async Task<Employee> getEmployee(int employeeID)
 		{
 			Employee? employee = null;
 
@@ -25,7 +25,7 @@ namespace TrainingManagerAPI.DataAccess
 			{
 				using (SqlConnection connection = new(_connectionString))
 				{
-					employee = connection.Query<Employee>(getEmployeeQuery, new { EmployeeID = employeeID }).FirstOrDefault();
+					employee = (Employee?)await connection.QueryAsync<Employee>(getEmployeeQuery, new { EmployeeID = employeeID });
 				}
 			}
 			catch (ArgumentNullException e)
@@ -38,7 +38,7 @@ namespace TrainingManagerAPI.DataAccess
 			return employee!;
 		}
 
-		public List<Employee> getEmployees()
+		public async Task<List<Employee>> getEmployees()
 		{
 			List<Employee> employees;
 
@@ -46,7 +46,7 @@ namespace TrainingManagerAPI.DataAccess
 
 			using (SqlConnection connection = new(_connectionString))
 			{
-				employees = connection.Query<Employee>(getEmployeeQuery).ToList();
+				employees = (List<Employee>)await connection.QueryAsync<Employee>(getEmployeeQuery);
 			}
 
 			return employees;
