@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import '../css/EmployeeDocumentsTable.css';
 import EmployeeAPI from '../ApiAccess/EmployeeAPI.js'
 import EmployeeDocumentsList from '../Components/EmployeeDocumentsList.jsx';
@@ -33,6 +33,11 @@ const EmployeeTrainingDocumentsPage = () => {
         setInputValue("");
     }
 
+    const updateEmployeeData = async (employeeID) => {
+        const data = await EmployeeAPI.getEmployee(employeeID);
+        setEmployee(data); 
+    };
+
     return (
         <div className="parent">
             <h2 className="header">Table page</h2>
@@ -58,7 +63,7 @@ const EmployeeTrainingDocumentsPage = () => {
                         </div>
                     </div>
                 </div>
-                <div className="right-section">123
+                <div className="right-section">
                     <table>
                         <thead>
                             <tr>
@@ -71,7 +76,7 @@ const EmployeeTrainingDocumentsPage = () => {
                                 <th scope="col">Status</th>
                             </tr>
                         </thead>
-                        <EmployeeDocumentsList Employee={Employee} />
+                        <EmployeeDocumentsList Employee={Employee} updateEmployeeData={updateEmployeeData} />
                     </table>
                 </div>
             </div>

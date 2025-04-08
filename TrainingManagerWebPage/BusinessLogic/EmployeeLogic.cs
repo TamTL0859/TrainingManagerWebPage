@@ -23,7 +23,7 @@ namespace TrainingManagerAPI.BusinessLogic
 			if (employee == null) { return new EmployeeViewDTO(); }
 
 			List<EmployeeTrainingDocument> etds = [];
-			etds = _employeeTrainingDocumentLogic.GetEmployeeTrainingDocuments(employeeID);
+			etds = await _employeeTrainingDocumentLogic.GetEmployeeTrainingDocuments(employeeID);
 			etds = Converter.ToEnum(etds);
 
 			employee.EmployeeTrainingDocuments = etds;
@@ -41,7 +41,7 @@ namespace TrainingManagerAPI.BusinessLogic
 			foreach (Employee employee in employees)
 			{
 				if(employee.EmployeeID != null) { 
-				employee.EmployeeTrainingDocuments = _employeeTrainingDocumentLogic.GetEmployeeTrainingDocuments((int)employee.EmployeeID);
+				employee.EmployeeTrainingDocuments = await _employeeTrainingDocumentLogic.GetEmployeeTrainingDocuments((int)employee.EmployeeID);
 				}
 				EmployeeViewDTO employeeViewDTO = Converter.FromEmployee(employee);
 				employeeViewDTOs.Add(employeeViewDTO);

@@ -52,9 +52,16 @@ namespace TrainingManagerAPI.DataAccess
 			parameters.Add("DocumentID", filter.TrainingDocumentID);
 			parameters.Add("EmployeeID", employeeID);
 
-			using (SqlConnection connection = new(_connectionString))
+			try
 			{
-				result = await connection.ExecuteAsync(query, parameters);
+				using (SqlConnection connection = new(_connectionString))
+				{
+					result = await connection.ExecuteAsync(query, parameters);
+				}
+			}
+			catch (Exception ex)
+			{
+				throw new Exception("Error", ex);
 			}
 
 			return result > 0;
@@ -66,6 +73,12 @@ namespace TrainingManagerAPI.DataAccess
 
 		private string ApplyFilter(int employeeID, EmployeeTrainingDocumentFilterDTO filter, DynamicParameters parameters)
 		{
+			if (filter.StatusPoints != null && filter.TrainingStatus != null)
+			{
+				parameters.Add("pointsStatus", filter.StatusPoints);
+				parameters.Add("trainingStatus", (int)filter.TrainingStatus!);
+				return "UPDATE EmployeeTrainingDocuments SET pointsStatus = @pointsStatus, trainingStatus = @trainingStatus WHERE fk_trainingDocumentID = @DocumentID AND fk_employeeID = @EmployeeID";
+			}
 			if (filter.StatusPoints != null)
 			{
 				parameters.Add("pointsStatus", filter.StatusPoints);

@@ -29,9 +29,9 @@ namespace TrainingManagerAPI.Controllers
 
 		// GET api/<EmployeeController>/5
 		[HttpGet("{id}")]
-		public EmployeeViewDTO Get(int id)
+		public async Task<EmployeeViewDTO> Get(int id)
 		{
-			return _employeeLogic.GetEmployee(id);
+			return await _employeeLogic.GetEmployee(id);
 		}
 		// POST api/<EmployeeController>
 		[HttpPost]
@@ -40,7 +40,7 @@ namespace TrainingManagerAPI.Controllers
 		}
 
 		// PUT api/<EmployeeController>/5
-		[HttpPut("/updateETD/{id}")]
+		[HttpPut("updateETD/{id}")]
 		public async Task<IActionResult> Put(int id, [FromBody] EmployeeTrainingDocumentFilterDTO filter)
 		{
 			bool result = await _employeeLogic.UpdateEmployeeTrainingDocumentBasedOnFilter(id, filter);

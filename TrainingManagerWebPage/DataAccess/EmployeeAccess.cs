@@ -25,7 +25,7 @@ namespace TrainingManagerAPI.DataAccess
 			{
 				using (SqlConnection connection = new(_connectionString))
 				{
-					employee = (Employee?)await connection.QueryAsync<Employee>(getEmployeeQuery, new { EmployeeID = employeeID });
+					employee = await connection.QueryFirstOrDefaultAsync<Employee>(getEmployeeQuery, new { EmployeeID = employeeID });
 				}
 			}
 			catch (ArgumentNullException e)
@@ -34,6 +34,9 @@ namespace TrainingManagerAPI.DataAccess
 			} catch (SqlException e)
 			{
 				Console.WriteLine(e);
+			} catch (Exception e)
+			{
+				throw new Exception("Error", e);
 			}
 			return employee!;
 		}

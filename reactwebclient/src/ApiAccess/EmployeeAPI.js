@@ -26,10 +26,10 @@ export const getEmployee = async (id) => {
         return null;
     }
 }
-export const UpdateEmployeeTrainingDocument = async (id) => {
+export const UpdateEmployeeTrainingDocument = async (id, filter) => {
     try {
-        const response = await api.post(`/updateETD/${id}`); //TODO: MAKE THIS
-        return response.data;
+        const response = await api.put(`/updateETD/${id}`, filter);
+        return response.status === 200
     } catch (e) {
         console.log("Error", e);
         return null;
@@ -38,5 +38,6 @@ export const UpdateEmployeeTrainingDocument = async (id) => {
 
 export default {
     getEmployees,
-    getEmployee
+    getEmployee,
+    UpdateEmployeeTrainingDocument
 }
