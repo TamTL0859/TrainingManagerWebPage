@@ -9,7 +9,7 @@ div {
     flex-direction: column;
 }
 
-/* Table styling */
+/*table*/
 table {
     border-collapse: collapse;
     border: 2px solid rgb(140, 140, 140);
@@ -48,13 +48,14 @@ caption {
     padding: 10px;
 }
 
+/*section with information*/
 .left-section {
     flex: 0 0 30%;
     background-color: lightgray; 
     padding: 10px;
 }
 
-/* Style for the right section (80%) */
+/*section with table*/
 .right-section {
     flex: 0 0 70%;
     background-color: #87CEFA; 
@@ -69,7 +70,6 @@ caption {
     font-size: 2rem;
 }
 
-/* Styling for the parent div containing left and right sections */
 .section {
     display: flex;
     width: 100%; 
@@ -116,6 +116,7 @@ button {
     width: 100px;
 }
 
+/*dropdown to update*/
 .dropdown {
   position: relative;
   border: 5px;
@@ -127,7 +128,6 @@ button {
         background-color: #87CEFA;
     }
 
-/* Dropdown Content (Hidden by Default) */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -138,22 +138,18 @@ button {
   z-index: 1;
 }
 
-/* Links inside the dropdown */
 .dropdown-content a {
   color: black;
   text-decoration: none;
   display: block;
 }
 
-/* Change color of dropdown links on hover */
 .dropdown-content a:hover {background-color: #f1f1f1}
 
-/* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
-/* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
   background-color: #3e8e41;
 }

@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TrainingManagerAPI.BusinessLogic;
 using TrainingManagerAPI.DTO;
-using TrainingManagerAPI.Model;
 using TrainingManagerWebPage.DTO;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -23,20 +22,18 @@ namespace TrainingManagerAPI.Controllers
 		[HttpGet]
 		public IEnumerable<string> Get()
 		{
-			return new List<string>(["123", "1233"]);
+			return new List<string>(["test"]);
 			//_employeeLogic.GetEmployees();
 		}
 
 		// GET api/<EmployeeController>/5
 		[HttpGet("{id}")]
-		public async Task<EmployeeViewDTO> Get(int id)
+		public async Task<IActionResult> Get(int id)
 		{
-			return await _employeeLogic.GetEmployee(id);
-		}
-		// POST api/<EmployeeController>
-		[HttpPost]
-		public void Post([FromBody] string value)
-		{
+			EmployeeViewDTO res = await _employeeLogic.GetEmployee(id);
+			if (res == null) { return BadRequest(); }
+
+			return Ok(res);
 		}
 
 		// PUT api/<EmployeeController>/5
@@ -46,12 +43,6 @@ namespace TrainingManagerAPI.Controllers
 			bool result = await _employeeLogic.UpdateEmployeeTrainingDocumentBasedOnFilter(id, filter);
 
 			return result ? Ok() : BadRequest();
-		}
-
-		// DELETE api/<EmployeeController>/5
-		[HttpDelete("{id}")]
-		public void Delete(int id)
-		{
 		}
 	}
 }

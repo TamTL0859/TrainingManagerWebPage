@@ -1,5 +1,4 @@
-﻿
-namespace TrainingManagerWebPage.DTO
+﻿namespace TrainingManagerWebPage.DTO
 {
 	public class EmployeeTrainingDocumentViewDTOInformation
 	{

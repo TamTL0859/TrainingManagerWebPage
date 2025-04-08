@@ -5,8 +5,8 @@ import '../css/Layout.css';
 const Layout = () => {
     const buttonStyle = {
         display: "inline-block",
-        padding: "4px 8px", // Slightly smaller padding
-        fontSize: "12px", // Smaller text
+        padding: "4px 8px", 
+        fontSize: "12px", 
         color: "black",
         textDecoration: "none",
         border: "2px solid black",
@@ -21,8 +21,8 @@ const Layout = () => {
 
     const buttonHoverStyle = {
         ...buttonStyle,
-        backgroundColor: "black",  // Background color on hover
-        color: "white",  // Text color changes to white on hover
+        backgroundColor: "black", 
+        color: "white",  
     };
 
     return (
@@ -38,8 +38,6 @@ const Layout = () => {
                     </ul>
                 </nav>
             </header>
-
-            {/* Content area where the pages will be rendered */}
             <div style={{ display: "flex", justifyContent: "center", alignItems: "center",  minHeight: "100vh" }}>
                 <Outlet />
             </div>
