@@ -4,8 +4,8 @@ namespace TrainingManagerAPI.DataAccess
 {
 	public interface IEmployeeAccess
 	{
-		public Employee getEmployee(int employeeID);
+		public Task<Employee> getEmployee(int employeeID);
 
-		public List<Employee> getEmployees();
+		public Task<List<Employee>> getEmployees();
 	}
 }

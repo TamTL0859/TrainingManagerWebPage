@@ -1,6 +1,8 @@
 ﻿using Dapper;
 using Microsoft.Data.SqlClient;
+using System.Reflection.Metadata;
 using TrainingManagerAPI.Model;
+using TrainingManagerWebPage.DTO;
 
 namespace TrainingManagerAPI.DataAccess
 {
@@ -13,7 +15,7 @@ namespace TrainingManagerAPI.DataAccess
 		}
 
 
-		public List<EmployeeTrainingDocument> getEmployeeTrainingDocuments(int employeeID)
+		public async Task<List<EmployeeTrainingDocument>> getEmployeeTrainingDocuments(int employeeID)
 		{
 			List<EmployeeTrainingDocument> employeeTrainingDocuments = [];
 			string getEmployeeTrainingDocumentsQuery = "SELECT d.documentTitle, d.pointsGoal, d.pointsStatus, d.trainingRequired, d.trainingStatus, d.trainingtype, td.trainingDocumentID, e.employeeID " +
@@ -24,30 +26,76 @@ namespace TrainingManagerAPI.DataAccess
 
 			using (SqlConnection connection = new(_connectionString))
 			{
-				employeeTrainingDocuments = connection.Query<EmployeeTrainingDocument, TrainingDocument, Employee, EmployeeTrainingDocument>(getEmployeeTrainingDocumentsQuery, (etd, td, e) =>
+				employeeTrainingDocuments = (List<EmployeeTrainingDocument>)await connection.QueryAsync<EmployeeTrainingDocument, TrainingDocument, Employee, EmployeeTrainingDocument>(getEmployeeTrainingDocumentsQuery, (etd, td, e) =>
 				{
 					etd.TrainingDocumentID = td.TrainingDocumentID;
 					etd.EmployeeID = e.EmployeeID;
 					return etd;
 				}, new { EmployeeID = employeeID },
 				splitOn: "trainingDocumentID, employeeID"
-				).ToList();
+				);
 			}
 
 			return employeeTrainingDocuments;
 		}
-		public EmployeeTrainingDocument getEmployeeTrainingDocument(int employeeID, int employeeTrainingDocumentID)
+		public async Task<EmployeeTrainingDocument> getEmployeeTrainingDocument(int employeeID, int employeeTrainingDocumentID)
 		{
 			throw new NotImplementedException();
 		}
 
-		public bool UpdateEmployeeTrainingDocument(int employeeID, int employeeTrainingDocumentID)
+		public async Task<bool> UpdateEmployeeTrainingDocument(int employeeID, EmployeeTrainingDocumentFilterDTO filter)
+		{
+			int result = 0;
+			string query = "";
+			DynamicParameters parameters = new();
+			query = ApplyFilter(employeeID, filter, parameters);
+			parameters.Add("DocumentID", filter.TrainingDocumentID);
+			parameters.Add("EmployeeID", employeeID);
+
+			try
+			{
+				using (SqlConnection connection = new(_connectionString))
+				{
+					result = await connection.ExecuteAsync(query, parameters);
+				}
+			}
+			catch (Exception ex)
+			{
+				throw new Exception("Error", ex);
+			}
+
+			return result > 0;
+		}
+		public async Task<bool> CreateEmployeeTrainingDocument(int employeeID, EmployeeTrainingDocument employeeTrainingDocument)
 		{
 			throw new NotImplementedException();
 		}
-		public bool CreateEmployeeTrainingDocument(int employeeID, EmployeeTrainingDocument employeeTrainingDocument)
+
+		private string ApplyFilter(int employeeID, EmployeeTrainingDocumentFilterDTO filter, DynamicParameters parameters)
 		{
-			throw new NotImplementedException();
+			if (filter.StatusPoints != null && filter.TrainingStatus != null)
+			{
+				parameters.Add("pointsStatus", filter.StatusPoints);
+				parameters.Add("trainingStatus", (int)filter.TrainingStatus!);
+				return "UPDATE EmployeeTrainingDocuments SET pointsStatus = @pointsStatus, trainingStatus = @trainingStatus WHERE fk_trainingDocumentID = @DocumentID AND fk_employeeID = @EmployeeID";
+			}
+			if (filter.StatusPoints != null)
+			{
+				parameters.Add("pointsStatus", filter.StatusPoints);
+				return "UPDATE EmployeeTrainingDocuments SET pointsStatus = @pointsStatus WHERE fk_trainingDocumentID = @DocumentID AND fk_employeeID = @EmployeeID";
+			}
+			if (filter.TrainingRequired != null)
+			{
+				parameters.Add("trainingRequired", (int)filter.TrainingRequired!);
+				return "UPDATE EmployeeTrainingDocuments SET trainingRequired = @trainingRequired WHERE fk_trainingDocumentID = @DocumentID AND fk_employeeID = @EmployeeID";
+			}
+			if (filter.TrainingStatus != null)
+			{
+				parameters.Add("trainingStatus", (int)filter.TrainingStatus!);
+				return "UPDATE EmployeeTrainingDocuments SET trainingStatus = @trainingStatus WHERE fk_trainingDocumentID = @DocumentID AND fk_employeeID = @EmployeeID";
+			}
+
+			return "";
 		}
 	}
 }

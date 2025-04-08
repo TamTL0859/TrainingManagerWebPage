@@ -16,14 +16,14 @@ namespace TrainingManagerAPI.BusinessLogic
 			_employeeTrainingDocumentLogic = ETDLogic;
 		}
 
-		public EmployeeViewDTO getEmployee(int employeeID)
+		public async Task<EmployeeViewDTO> GetEmployee(int employeeID)
 		{
-			Employee? employee = _employeeDataAccess.getEmployee(employeeID);
+			Employee? employee = await _employeeDataAccess.getEmployee(employeeID);
 
 			if (employee == null) { return new EmployeeViewDTO(); }
 
 			List<EmployeeTrainingDocument> etds = [];
-			etds = _employeeTrainingDocumentLogic.GetEmployeeTrainingDocuments(employeeID);
+			etds = await _employeeTrainingDocumentLogic.GetEmployeeTrainingDocuments(employeeID);
 			etds = Converter.ToEnum(etds);
 
 			employee.EmployeeTrainingDocuments = etds;
@@ -33,21 +33,28 @@ namespace TrainingManagerAPI.BusinessLogic
 			return employeeViewDTO;
 		}
 
-		public List<EmployeeViewDTO> GetEmployees()
+		public async Task<List<EmployeeViewDTO>> GetEmployees()
 		{
 			List<EmployeeViewDTO> employeeViewDTOs = [];
-			List<Employee> employees = _employeeDataAccess.getEmployees();
+			List<Employee> employees = await _employeeDataAccess.getEmployees();
 
 			foreach (Employee employee in employees)
 			{
 				if(employee.EmployeeID != null) { 
-				employee.EmployeeTrainingDocuments = _employeeTrainingDocumentLogic.GetEmployeeTrainingDocuments((int)employee.EmployeeID);
+				employee.EmployeeTrainingDocuments = await _employeeTrainingDocumentLogic.GetEmployeeTrainingDocuments((int)employee.EmployeeID);
 				}
 				EmployeeViewDTO employeeViewDTO = Converter.FromEmployee(employee);
 				employeeViewDTOs.Add(employeeViewDTO);
 			}
 
 			return employeeViewDTOs;
+		}
+
+		public async Task<bool> UpdateEmployeeTrainingDocumentBasedOnFilter(int id, EmployeeTrainingDocumentFilterDTO filter)
+		{
+			bool result = false;
+			result =  await _employeeTrainingDocumentLogic.UpdateEmployeeTrainingDocument(id, filter);
+			return result;
 		}
 	}
 }
