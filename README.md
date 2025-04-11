@@ -1,5 +1,5 @@
 # TrainingManagerWebPage
-the project consists of backend getting a employee's training documentation from the database to the react web page where the user can change the progress of the training the employee is doing
+the project consists of backend getting a employee's training documentation from the database to the react web page where the user can change the progress of the training
 
 # setup
 npm install
